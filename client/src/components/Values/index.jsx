@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Container, Title, Text, Image, Button, } from '@mantine/core';
+import { Container, Title, Text, Image, Button } from '@mantine/core';
 import classes from '@/assets/css/HeroImageRight.module.css';
-const Bio = () => {
+const Values = () => {
     return (
         <div
           className={classes.root}
           style={{
-            backgroundImage: `url('../assets/images/Bio.JPG')` ,
+            backgroundImage: `url('../assets/images/Values.JPG')` ,
             backgroundSize: 'cover', // Ensures the image covers the whole div
             backgroundPosition: 'center', // Center the image
             backgroundRepeat: 'no-repeat', // Prevent repeating
@@ -17,6 +17,10 @@ const Bio = () => {
             <div className={classes.inner}>
               <div className={classes.content}>
                 <Title className={classes.title}>
+                  
+                  <br />
+                  <br />
+                  <br />
                   A{' '}
                   <Text
                     component="span"
@@ -26,12 +30,11 @@ const Bio = () => {
                   >
                     fully featured
                   </Text>{' '}
-                  React components library
+                  About Spirit Seeds Wellness
                 </Title>
       
                 <Text className={classes.description} mt={30}>
-                  Build fully functional accessible web applications with ease – Mantine includes more
-                  than 100 customizable components and hooks to cover you in any situation
+                  Find Out More About Us
                 </Text>
       
                 <Button
@@ -59,4 +62,4 @@ const Bio = () => {
       );
 };
 
-export default Bio;
+export default Values;

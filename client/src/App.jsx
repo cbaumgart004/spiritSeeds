@@ -6,7 +6,8 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 import Nav from './components/Nav';
 import { StoreProvider } from './utils/GlobalState';
 
@@ -31,12 +32,14 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <StoreProvider>
-        <Nav />
-        <Outlet />
-      </StoreProvider>
-    </ApolloProvider>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <ApolloProvider client={client}>
+        <StoreProvider>
+          <Nav />
+          <Outlet />
+        </StoreProvider>
+      </ApolloProvider>
+    </MantineProvider>
   );
 }
 

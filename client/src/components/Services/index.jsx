@@ -1,13 +1,14 @@
 import React from 'react';
+import '@mantine/core/styles/ColorPicker.css';
+import { Container, Title, Text, Button } from '@mantine/core';
 
-import { Container, Title, Text, Image, Button, } from '@mantine/core';
 import classes from '@/assets/css/HeroImageRight.module.css';
-const Bio = () => {
+const Services = () => {
     return (
         <div
           className={classes.root}
           style={{
-            backgroundImage: `url('../assets/images/Bio.JPG')` ,
+            backgroundImage: `url('../assets/images/SoundHealing.JPG')` ,
             backgroundSize: 'cover', // Ensures the image covers the whole div
             backgroundPosition: 'center', // Center the image
             backgroundRepeat: 'no-repeat', // Prevent repeating
@@ -26,12 +27,11 @@ const Bio = () => {
                   >
                     fully featured
                   </Text>{' '}
-                  React components library
+                  Spirit Seeds Wellness services
                 </Title>
       
                 <Text className={classes.description} mt={30}>
-                  Build fully functional accessible web applications with ease – Mantine includes more
-                  than 100 customizable components and hooks to cover you in any situation
+                  At Spirit Seeds Wellness, we provide a number of massage, yoga, and sound healing services
                 </Text>
       
                 <Button
@@ -59,4 +59,4 @@ const Bio = () => {
       );
 };
 
-export default Bio;
+export default Services;
