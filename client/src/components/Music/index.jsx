@@ -3,12 +3,12 @@ import '@mantine/core/styles/ColorPicker.css';
 import { Container, Title, Text, Button } from '@mantine/core';
 
 import classes from '@/assets/css/HeroImageRight.module.css';
-const Services = () => {
+const Music = () => {
     return (
         <div
           className={classes.root}
           style={{
-            backgroundImage: `url('../assets/images/SoundHealing.JPG')` ,
+            backgroundImage: `url('../assets/images/Music.JPG')` ,
             backgroundSize: 'cover', // Ensures the image covers the whole div
             backgroundPosition: 'center', // Center the image
             backgroundRepeat: 'no-repeat', // Prevent repeating
@@ -42,17 +42,9 @@ const Services = () => {
                   className={classes.control}
                   mt={40}
                 >
-                  Learn More
+                  Listen Now
                 </Button>
-                <Button
-                  variant="gradient"
-                  gradient={{ from: 'pink', to: 'yellow' }}
-                  size="xl"
-                  className={classes.control}
-                  mt={40}
-                >
-                  Book Now
-                </Button>
+                
               </div>
             </div>
           </Container>
@@ -60,4 +52,4 @@ const Services = () => {
       );
 };
 
-export default Services;
+export default Music;

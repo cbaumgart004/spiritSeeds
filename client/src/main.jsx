@@ -10,7 +10,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
-
 import Home from "./pages/Home";
 
 const router = createBrowserRouter([

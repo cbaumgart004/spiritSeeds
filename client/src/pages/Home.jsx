@@ -1,7 +1,7 @@
 // Home.js
 
 import React from 'react';
-import Bio from '../components/Bio';
+import Music from '../components/Music';
 import Services from '../components/Services';
 import About from '../components/About';
 import Values from '../components/Values';
@@ -11,7 +11,7 @@ const Home = () => {
             <Services />
             <About />
             <Values />
-            <Bio />
+            <Music />
         </div>
     );
 };
