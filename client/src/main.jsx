@@ -11,6 +11,8 @@ import Signup from "./pages/Signup";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
 
+import Home from "./pages/Home";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Merch />,
+        element: <Home />,
       },
       {
         path: "/login",
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
         path: "/products/:id",
         element: <Detail />,
       },
+      {
+        path: "/merch",
+        element: <Merch />,
+      }
     ],
   },
 ]);
