@@ -17,16 +17,16 @@ const About = () => {
             <div className={classes.inner}>
               <div className={classes.content}>
                 <Title className={classes.title}>
-                  A{' '}
+                  About{' '}
                   <Text
                     component="span"
                     inherit
                     variant="gradient"
-                    gradient={{ from: 'pink', to: 'yellow' }}
+                    gradient={{ from: 'pink', to: 'green' }}
                   >
-                    fully featured
+                    Spirit Seeds Wellness
                   </Text>{' '}
-                  About Spirit Seeds Wellness
+                  
                 </Title>
       
                 <Text className={classes.description} mt={30}>
@@ -35,7 +35,7 @@ const About = () => {
       
                 <Button
                   variant="gradient"
-                  gradient={{ from: 'pink', to: 'yellow' }}
+                  gradient={{ from: 'pink', to: 'green' }}
                   size="xl"
                   className={classes.control}
                   mt={40}

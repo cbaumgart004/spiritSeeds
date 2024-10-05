@@ -18,16 +18,16 @@ const Services = () => {
             <div className={classes.inner}>
               <div className={classes.content}>
                 <Title className={classes.title}>
-                  A{' '}
+                  {' '}
                   <Text
                     component="span"
                     inherit
                     variant="gradient"
                     gradient={{ from: 'pink', to: 'yellow' }}
                   >
-                    fully featured
+                    Spirit Seeds Wellness
                   </Text>{' '}
-                  Spirit Seeds Wellness services
+                  Services
                 </Title>
       
                 <Text className={classes.description} mt={30}>
