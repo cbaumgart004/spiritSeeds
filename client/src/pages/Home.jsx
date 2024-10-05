@@ -1,15 +1,13 @@
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
-import Cart from "../components/Cart";
+// Home.js
+import React from 'react';
+import Bio from '../components/Bio';
 
 const Home = () => {
-  return (
-    <div className="container">
-      <CategoryMenu />
-      <ProductList />
-      <Cart />
-    </div>
-  );
+    return (
+        <div>
+            <Bio />
+        </div>
+    );
 };
 
 export default Home;
