@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Container, Title, Text, Button } from '@mantine/core';
 import classes from '@/assets/css/HeroImageRight.module.css';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -39,14 +40,9 @@ const Services = () => {
             }}
           >
             <Title className={classes.title}>
-              <Text
-                component="span"
-                inherit
-                variant="gradient"
-                gradient={{ from: 'pink', to: 'yellow' }}
-              >
-                Spirit Seeds Wellness
-              </Text>{' '}
+              <span className={classes.gradientText}>
+              Spirit Seeds Wellness
+              </span>{' '}
               Services
             </Title>
 
@@ -63,6 +59,7 @@ const Services = () => {
             >
               Learn More
             </Button>
+            <Link to="/BookService">
             <Button
               variant="gradient"
               gradient={{ from: 'pink', to: 'yellow' }}
@@ -72,6 +69,7 @@ const Services = () => {
             >
               Book Now
             </Button>
+            </Link>
           </div>
         </div>
       </Container>

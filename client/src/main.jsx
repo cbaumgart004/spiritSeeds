@@ -46,6 +46,7 @@ const router = createBrowserRouter([
         path: "/merch",
         element: <Merch />,
       }
+      
     ],
   },
 ]);
