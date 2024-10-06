@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Container, Title, Text, Image, Button } from '@mantine/core';
 import classes from '@/assets/css/HeroImageRight.module.css';
 
-const Values = () => {
+const OurValues = () => {
   const [scrollY, setScrollY] = useState(0);
 
   const handleScroll = () => {
@@ -46,7 +46,7 @@ const Values = () => {
                     style={{ color: 'gray' }}
                     inherit
                     variant="gradient"
-                    gradient={{ from: 'pink', to: 'yellow' }}
+                    
                   >
                     fully featured
                   </Text>{' '}
@@ -56,15 +56,15 @@ const Values = () => {
                 <Text className={classes.description} mt={30}>
                   Find Out More About Us
                 </Text>
-                <Link to="/values">
+                <Link to="/">
                 <Button
                   variant="gradient"
-                  gradient={{ from: 'pink', to: 'yellow' }}
+                  
                   size="xl"
                   className={classes.control}
                   mt={40}
                 >
-                  Learn More
+                  Home
                 </Button>
                 </Link>
               </div>
@@ -74,4 +74,4 @@ const Values = () => {
       );
 };
 
-export default Values;
+export default OurValues;
