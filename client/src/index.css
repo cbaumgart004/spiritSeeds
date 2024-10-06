@@ -21,7 +21,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Karla", sans-serif;
+  font-family: 'Karla', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
@@ -34,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 500;
   margin: 5px 0;
   line-height: 1.25;
@@ -94,40 +94,45 @@ a:hover {
 .overlay {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0; /* Align the overlay to the right */
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between; /* Center vertically */
-  align-items: center; /* Center horizontally */
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-end; /* Align items to the end */
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  padding: 10px; /* Add some padding for spacing */
 }
 
 .site-title {
   font-size: 3rem;
   color: white;
   text-decoration: none;
-  margin-bottom: 20px; /* Add some space below the title */
+  margin-bottom: 20px; /* Add space below the title */
+  align-self: flex-start; /* Align the site title to the start (left) */
 }
 
 .nav-links {
   list-style-type: none;
   display: flex;
-  gap: 20px; /* Space between links */
+  flex-direction: column; /* Change to column for vertical stacking */
+  gap: 10px; /* Space between links */
+  width: 100%; /* Ensures links take full width */
 }
 
 .nav-links li {
   font-size: 1.5rem;
+  width: 100%; /* Ensures the list items fill the available width */
 }
 
 .nav-links a {
-  color: white;
+  color: rgb(73, 63, 63);
   text-decoration: none;
   padding: 10px 20px;
   background-color: rgba(255, 255, 255, 0.2); /* Transparent button style */
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  display: block; /* Makes the anchor take the full width */
 }
 
 .nav-links a:hover {
