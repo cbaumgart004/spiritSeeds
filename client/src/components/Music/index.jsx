@@ -4,6 +4,7 @@ import { Container, Title, Text, Button } from '@mantine/core';
 import { IconBrandSpotify } from '@tabler/icons-react'; // For Spotify icon
 import { FaApple } from 'react-icons/fa'; // Import the Apple logo from react-icons
 import classes from '@/assets/css/HeroImageRight.module.css';
+import { Link } from'react-router-dom';
 const Music = () => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -84,6 +85,7 @@ const Music = () => {
       <FaApple size={20} style={{ marginRight: '8px' }} />
       Apple Music
       </Button>
+                <Link to="/merch">
                 <Button
                   variant="gradient"
                   gradient={{ from: 'pink', to: 'yellow' }}
@@ -93,7 +95,7 @@ const Music = () => {
                 >
                   Purchase CD
                 </Button>
-                
+                </Link>
               </div>
             </div>
           </Container>
