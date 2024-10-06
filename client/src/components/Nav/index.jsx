@@ -77,9 +77,11 @@ const Nav = () => {
           opened={opened}
           onClose={() => setOpened(false)}
           padding="md"
-          size="sm"
+          size="md"
           variant="transparent"
           position="right"
+          radius="xl"
+          overlayProps={{ backgroundOpacity: 0.5, blur: 1 }}
           closeButton={true}
         >
           <ScrollArea style={{ height: 'calc(100vh - 60px)' }}>
