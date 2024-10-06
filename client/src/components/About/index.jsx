@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, Title, Text, Image, Button, } from '@mantine/core';
 import classes from '@/assets/css/HeroImageRight.module.css';
 const About = () => {
-    return (
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
+  return (
         <div
           className={classes.root}
           style={{
@@ -11,21 +24,23 @@ const About = () => {
             backgroundSize: 'cover', // Ensures the image covers the whole div
             backgroundPosition: 'center', // Center the image
             backgroundRepeat: 'no-repeat', // Prevent repeating
+            position: 'relative', // To contain absolutely positioned elements
           }}
         >
           <Container size="lg">
             <div className={classes.inner}>
-              <div className={classes.content}>
+              <div 
+                className={classes.content}
+                style={{ 
+                  transform: `translateY(${scrollY * -0.25}px)`, // Gives the content a parallax effect per M's request
+                  marginTop: '200px', // Add margin at the top
+                }}
+              >
                 <Title className={classes.title}>
                   About{' '}
-                  <Text
-                    component="span"
-                    inherit
-                    variant="gradient"
-                    gradient={{ from: 'pink', to: 'green' }}
-                  >
-                    Spirit Seeds Wellness
-                  </Text>{' '}
+                  <span className={classes.gradientText}>
+                  Spirit Seeds Wellness
+                  </span>{' '}
                   
                 </Title>
       
@@ -35,22 +50,13 @@ const About = () => {
       
                 <Button
                   variant="gradient"
-                  gradient={{ from: 'pink', to: 'green' }}
                   size="xl"
                   className={classes.control}
                   mt={40}
                 >
                   Learn More
                 </Button>
-                <Button
-                  variant="gradient"
-                  gradient={{ from: 'pink', to: 'yellow' }}
-                  size="xl"
-                  className={classes.control}
-                  mt={40}
-                >
-                  Book Now
-                </Button>
+                
               </div>
             </div>
           </Container>

@@ -10,8 +10,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
-
 import Home from "./pages/Home";
+import ValuesPage from "./pages/ValuesPage";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +46,11 @@ const router = createBrowserRouter([
       {
         path: "/merch",
         element: <Merch />,
-      }
+      },
+      {
+        path: "/values",
+        element: <ValuesPage />,
+      },
     ],
   },
 ]);
