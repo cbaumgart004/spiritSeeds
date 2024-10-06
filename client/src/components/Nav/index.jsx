@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useState } from 'react'
-import { Burger, Drawer, ScrollArea } from '@mantine/core'
+import { Burger, Popover, ScrollArea, Button } from '@mantine/core'
 import Auth from '../../utils/auth'
 import { Link } from 'react-router-dom'
 
@@ -73,21 +73,33 @@ const Nav = () => {
           ripple="light"
         />
         &#9776; {/* This represents the hamburger icon */}
-        <Drawer
+        <Popover
           opened={opened}
           onClose={() => setOpened(false)}
-          padding="md"
-          size="md"
-          variant="transparent"
-          position="right"
-          radius="xl"
+          position="bottom" // Position the popover below the burger icon
           overlayProps={{ backgroundOpacity: 0.5, blur: 1 }}
-          closeButton={true}
+          contentProps={{ padding: 20, borderRadius: 5 }}
         >
-          <ScrollArea style={{ height: 'calc(100vh - 60px)' }}>
+          <Popover.Target>
+            <Button
+              onClick={() => setOpened((o) => !o)}
+              className="open-popover-button"
+              style={{ display: 'none' }} // Hide the button; we use the hamburger for opening
+            >
+              Open Menu
+            </Button>
+          </Popover.Target>
+          <Popover.Dropdown
+            style={{
+              backgroundColor: '#2c3e50', // Custom background color for the popover
+              color: 'white',
+              borderRadius: '10px',
+              padding: '10px',
+            }}
+          >
             {showNavigation()}
-          </ScrollArea>
-        </Drawer>
+          </Popover.Dropdown>
+        </Popover>
       </div>
     </header>
   )
