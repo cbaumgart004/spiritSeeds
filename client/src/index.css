@@ -84,7 +84,7 @@ a:hover {
   top: 0;
   width: 100%;
   height: 20vh; /* Full screen height */
-  background-image: url('./assets/images/Logo2.JPG'); /* Set your background image path */
+  background-image: url("./assets/images/Logo2.JPG"); /* Set your background image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -159,7 +159,7 @@ img {
   max-width: 100%;
 }
 
-span[role='img'] {
+span[role="img"] {
   cursor: default;
 }
 
@@ -212,7 +212,7 @@ input:focus {
 }
 
 .my-1 {
-  margin-top: var(--spacing-one);
+  margin-top: 25vh;
   margin-bottom: var(--spacing-one);
 }
 
