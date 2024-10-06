@@ -15,6 +15,11 @@ export default defineConfig({
       }
     }
   },
+  resolve: {
+    alias: {
+      '@': '/src',  // Alias @ to /src
+    },
+  },
   test: {
     globals: true,
     environment: 'happy-dom'

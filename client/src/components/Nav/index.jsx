@@ -1,11 +1,15 @@
+/* eslint-disable no-unused-vars */
+
+import React from "react";
+
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 
-function Nav() {
+const Nav = () => {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul className="nav-links">
           {/* <li className="mx-1">
             <Link to="/Home">Home</Link>
           </li>
@@ -28,7 +32,7 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
+        <ul className="nav-links">
           {/* <li className="mx-1">
           <Link to="/Home">Home</Link>
         </li>
@@ -50,14 +54,16 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">Spirit Seeds</Link>
-      </h1>
+    <header className="background-header">
+      <div className="overlay">
+        <h1 className="site-title">
+          <Link to="/">Home</Link>
+        </h1>
 
-      <nav>{showNavigation()}</nav>
+        <nav>{showNavigation()}</nav>
+      </div>
     </header>
   );
-}
+};
 
 export default Nav;
