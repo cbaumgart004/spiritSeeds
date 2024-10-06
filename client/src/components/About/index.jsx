@@ -38,14 +38,9 @@ const About = () => {
               >
                 <Title className={classes.title}>
                   About{' '}
-                  <Text
-                    component="span"
-                    inherit
-                    variant="gradient"
-                    gradient={{ from: 'pink', to: 'green' }}
-                  >
-                    Spirit Seeds Wellness
-                  </Text>{' '}
+                  <span className={classes.gradientText}>
+                  Spirit Seeds Wellness
+                  </span>{' '}
                   
                 </Title>
       
@@ -55,7 +50,6 @@ const About = () => {
       
                 <Button
                   variant="gradient"
-                  gradient={{ from: 'pink', to: 'green' }}
                   size="xl"
                   className={classes.control}
                   mt={40}
