@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 
-import React from 'react'
+import React from "react";
 
-import Auth from '../../utils/auth'
-import { Link } from 'react-router-dom'
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   function showNavigation() {
@@ -29,7 +29,7 @@ const Nav = () => {
             </a>
           </li>
         </ul>
-      )
+      );
     } else {
       return (
         <ul className="nav-links">
@@ -49,7 +49,7 @@ const Nav = () => {
             <Link to="/login">Login</Link>
           </li>
         </ul>
-      )
+      );
     }
   }
 
@@ -63,7 +63,7 @@ const Nav = () => {
         <nav>{showNavigation()}</nav>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
