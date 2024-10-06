@@ -21,7 +21,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Karla", sans-serif;
+  font-family: 'Karla', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
@@ -34,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: 500;
   margin: 5px 0;
   line-height: 1.25;
@@ -126,7 +126,7 @@ a:hover {
 }
 
 .nav-links a {
-  color: white;
+  color: rgb(73, 63, 63);
   text-decoration: none;
   padding: 10px 20px;
   background-color: rgba(255, 255, 255, 0.2); /* Transparent button style */

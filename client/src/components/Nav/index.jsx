@@ -76,11 +76,13 @@ const Nav = () => {
         <Drawer
           opened={opened}
           onClose={() => setOpened(false)}
-          title="Menu"
           padding="md"
           size="sm"
+          variant="transparent"
+          position="right"
+          closeButton={true}
         >
-          <ScrollArea style={{ height: 'calc(20vh - 60px)' }}>
+          <ScrollArea style={{ height: 'calc(100vh - 60px)' }}>
             {showNavigation()}
           </ScrollArea>
         </Drawer>
