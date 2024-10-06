@@ -15,7 +15,7 @@ db.once("open", async () => {
     {
       name: "Ambient Music for Relaxation",
       description: "Ambient music for relaxation.",
-      image: "Todo: TBD",
+      image: "Sonic-Healing.JPG",
       category: categories[0]._id,
       price: 2.99,
       quantity: 500,
