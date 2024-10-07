@@ -1,22 +1,21 @@
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from './App.jsx'
-import Merch from './pages/Merch'
-import Detail from './pages/Detail'
-import NoMatch from './pages/NoMatch'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import Success from './pages/Success'
-import OrderHistory from './pages/OrderHistory'
-import Home from './pages/Home'
-import ValuesPage from './pages/ValuesPage'
-import BookService from './pages/BookService'
+import App from "./App.jsx";
+import Merch from "./pages/Merch";
+import Detail from "./pages/Detail";
+import NoMatch from "./pages/NoMatch";
+import Login from "./pages/Login";
+import Success from "./pages/Success";
+import OrderHistory from "./pages/OrderHistory";
+import Home from "./pages/Home";
+import ValuesPage from "./pages/ValuesPage";
+import BookService from "./pages/BookService";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     error: <NoMatch />,
     children: [
@@ -25,41 +24,37 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/login',
+        path: "/login",
         element: <Login />,
       },
       {
-        path: '/signup',
-        element: <Signup />,
-      },
-      {
-        path: '/success',
+        path: "/success",
         element: <Success />,
       },
       {
-        path: '/orderHistory',
+        path: "/orderHistory",
         element: <OrderHistory />,
       },
       {
-        path: '/products/:id',
+        path: "/products/:id",
         element: <Detail />,
       },
       {
-        path: '/merch',
+        path: "/merch",
         element: <Merch />,
       },
       {
-        path: '/values',
+        path: "/values",
         element: <ValuesPage />,
       },
       {
-        path: '/bookService',
+        path: "/bookService",
         element: <BookService />,
       },
     ],
   },
-])
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
-)
+);

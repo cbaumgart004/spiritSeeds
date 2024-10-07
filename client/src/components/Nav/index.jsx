@@ -1,22 +1,19 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from 'react'
-import { Burger, Drawer, ScrollArea } from '@mantine/core'
-import Auth from '../../utils/auth'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Burger, Drawer, ScrollArea } from "@mantine/core";
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
-  const [opened, setOpened] = useState(false)
+  const [opened, setOpened] = useState(false);
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
         <ul className="nav-links">
-          {/* <li className="mx-1">
-            <Link to="/Home">Home</Link>
-          </li>
           <li className="mx-1">
-            <Link to="/Calendar">Calendar</Link>
-          </li> */}
+            <Link to="/Calendar">Book Services</Link>
+          </li>
           <li className="mx-1">
             <Link to="/merch">Merch</Link>
           </li>
@@ -30,16 +27,13 @@ const Nav = () => {
             </a>
           </li>
         </ul>
-      )
+      );
     } else {
       return (
         <ul className="nav-links">
-          {/* <li className="mx-1">
-          <Link to="/Home">Home</Link>
-        </li>
-        <li className="mx-1">
-          <Link to="/Calendar">Calendar</Link>
-        </li> */}
+          <li className="mx-1">
+            <Link to="/bookService">Book Now</Link>
+          </li>
           <li className="mx-1">
             <Link to="/values">Values</Link>
           </li>
@@ -53,7 +47,7 @@ const Nav = () => {
             <Link to="/login">Login</Link>
           </li>
         </ul>
-      )
+      );
     }
   }
 
@@ -84,13 +78,13 @@ const Nav = () => {
           overlayProps={{ backgroundOpacity: 0.5, blur: 1 }}
           closeButton={true}
         >
-          <ScrollArea style={{ height: 'calc(100vh - 60px)' }}>
+          <ScrollArea style={{ height: "calc(100vh - 60px)" }}>
             {showNavigation()}
           </ScrollArea>
         </Drawer>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
