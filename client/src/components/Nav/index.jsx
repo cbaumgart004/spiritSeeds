@@ -1,22 +1,17 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useState } from 'react'
-import { Burger, Popover, ScrollArea, Button } from '@mantine/core'
+import { Burger, Popover } from '@mantine/core'
 import Auth from '../../utils/auth'
 import { Link } from 'react-router-dom'
 
 const Nav = () => {
-  const [opened, setOpened] = useState(false)
+  const [opened, setOpened] = useState(false) // Track popover open/close state
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
         <ul className="nav-links">
-          {/* <li className="mx-1">
-            <Link to="/Home">Home</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/Calendar">Calendar</Link>
-          </li> */}
           <li className="mx-1">
             <Link to="/services">Services</Link>
           </li>
@@ -33,7 +28,6 @@ const Nav = () => {
             <Link to="/orderHistory">Order History</Link>
           </li>
           <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
@@ -43,12 +37,6 @@ const Nav = () => {
     } else {
       return (
         <ul className="nav-links">
-          {/* <li className="mx-1">
-          <Link to="/Home">Home</Link>
-        </li>
-        <li className="mx-1">
-          <Link to="/Calendar">Calendar</Link>
-        </li> */}
           <li className="mx-1">
             <Link to="/services">Services</Link>
           </li>
@@ -59,7 +47,7 @@ const Nav = () => {
             <Link to="/values">Values</Link>
           </li>
           <li className="mx-1">
-            <Link to="/Merch">Store</Link>
+            <Link to="/merch">Store</Link>
           </li>
           <li className="mx-1">
             <Link to="/signup">Signup</Link>
@@ -78,35 +66,31 @@ const Nav = () => {
         <h1 className="site-title">
           <Link to="/">Home</Link>
         </h1>
-        <Burger
-          color="white"
-          size="md"
-          variant="solid"
-          className="burger-icon"
-          onClick={() => setOpened((o) => !o)}
-          opened={opened}
-          ripple="light"
-        />
-        &#9776; {/* This represents the hamburger icon */}
+
+        {/* Burger button wrapped inside the Popover.Target */}
         <Popover
           opened={opened}
-          onClose={() => setOpened(false)}
-          position="bottom" // Position the popover below the burger icon
-          overlayProps={{ backgroundOpacity: 0.5, blur: 1 }}
-          contentProps={{ padding: 20, borderRadius: 5 }}
+          onClose={() => setOpened(false)} // Close popover when onClose is triggered
+          position="bottom" // Popover appears below the burger button
+          withArrow
+          placement="start" // Adjust placement if needed
         >
           <Popover.Target>
-            <Button
-              onClick={() => setOpened((o) => !o)}
-              className="open-popover-button"
-              style={{ display: 'none' }} // Hide the button; we use the hamburger for opening
-            >
-              Open Menu
-            </Button>
+            <Burger
+              color="white"
+              size="md"
+              variant="solid"
+              className="burger-icon"
+              style={{ position: 'relative', zIndex: 3 }}
+              onClick={() => setOpened((o) => !o)} // Toggle popover
+              opened={opened}
+              ripple="light"
+            />
           </Popover.Target>
+
           <Popover.Dropdown
             style={{
-              backgroundColor: '#2c3e50', // Custom background color for the popover
+              backgroundColor: '#2c3e50',
               color: 'white',
               borderRadius: '10px',
               padding: '10px',
