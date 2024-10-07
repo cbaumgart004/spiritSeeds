@@ -1,15 +1,12 @@
-import React from 'react';
-import OurValues from '../components/OurValues';
+/* eslint-disable no-unused-vars */
+import React from 'react'
+import OurValues from '../components/OurValues'
 const ValuesPage = () => {
-    return (
-        <div>
-            <OurValues />
-        </div>
-            
-            );
-            
+  return (
+    <div>
+      <OurValues />
+    </div>
+  )
 }
 
-export default ValuesPage;
-
-
+export default ValuesPage

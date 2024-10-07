@@ -18,7 +18,16 @@ const Nav = () => {
             <Link to="/Calendar">Calendar</Link>
           </li> */}
           <li className="mx-1">
-            <Link to="/merch">Merch</Link>
+            <Link to="/services">Services</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/values">Values</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/merch">Store</Link>
           </li>
           <li className="mx-1">
             <Link to="/orderHistory">Order History</Link>
@@ -41,10 +50,16 @@ const Nav = () => {
           <Link to="/Calendar">Calendar</Link>
         </li> */}
           <li className="mx-1">
+            <Link to="/services">Services</Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="mx-1">
             <Link to="/values">Values</Link>
           </li>
           <li className="mx-1">
-            <Link to="/Merch">Merch</Link>
+            <Link to="/Merch">Store</Link>
           </li>
           <li className="mx-1">
             <Link to="/signup">Signup</Link>

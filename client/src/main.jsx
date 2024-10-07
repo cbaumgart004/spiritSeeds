@@ -13,6 +13,8 @@ import OrderHistory from './pages/OrderHistory'
 import Home from './pages/Home'
 import ValuesPage from './pages/ValuesPage'
 import BookService from './pages/BookService'
+import ServicesPage from './pages/ServicesPage'
+import About from './pages/About'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
       {
         path: '/bookService',
         element: <BookService />,
+      },
+      {
+        path: '/services',
+        element: <ServicesPage />,
+      },
+      {
+        path: '/about',
+        element: <About />,
       },
     ],
   },
