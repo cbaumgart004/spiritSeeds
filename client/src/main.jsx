@@ -7,11 +7,14 @@ import Merch from "./pages/Merch";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
 import Home from "./pages/Home";
 import ValuesPage from "./pages/ValuesPage";
 import BookService from "./pages/BookService";
+import ServicesPage from "./pages/ServicesPage";
+import About from "./pages/About";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +53,14 @@ const router = createBrowserRouter([
       {
         path: "/bookService",
         element: <BookService />,
+      },
+      {
+        path: "/services",
+        element: <ServicesPage />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
     ],
   },
