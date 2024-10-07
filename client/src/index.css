@@ -172,6 +172,14 @@ img {
   max-width: 100%;
 }
 
+.img {
+  max-width: 20vw;
+}
+
+.cart {
+  margin-top: 22vh;
+}
+
 span[role="img"] {
   cursor: default;
 }
