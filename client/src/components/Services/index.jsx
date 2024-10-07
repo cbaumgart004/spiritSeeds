@@ -51,15 +51,16 @@ const Services = () => {
               At Spirit Seeds Wellness, we provide a number of massage, yoga,
               and sound healing services
             </Text>
-
-            <Button
-              variant="gradient"
-              size="xl"
-              className={classes.control}
-              mt={40}
-            >
-              Learn More
-            </Button>
+            <Link to="/services">
+              <Button
+                variant="gradient"
+                size="xl"
+                className={classes.control}
+                mt={40}
+              >
+                Learn More
+              </Button>
+            </Link>
             <Link to="/BookService">
               <Button
                 variant="gradient"
