@@ -49,3 +49,10 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const GET_BOOKED_TIMES = gql`
+  mutation getBookedTimes(
+    $service: ID!, 
+    $date: String!
+    ) 
+`; 
