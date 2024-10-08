@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from 'react'
-import { Burger, Popover } from '@mantine/core'
-import Auth from '../../utils/auth'
-import { Link } from 'react-router-dom'
-import classes from '@/assets/css/HeroImageRight.module.css'
+import React, { useState } from "react";
+import { Burger, Popover } from "@mantine/core";
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
+import classes from "@/assets/css/HeroImageRight.module.css";
 const Nav = () => {
-  const [opened, setOpened] = useState(false) // Track popover open/close state
+  const [opened, setOpened] = useState(false); // Track popover open/close state
 
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -33,7 +33,7 @@ const Nav = () => {
             </a>
           </li>
         </ul>
-      )
+      );
     } else {
       return (
         <ul className="nav-links">
@@ -56,7 +56,7 @@ const Nav = () => {
             <Link to="/login">Login</Link>
           </li>
         </ul>
-      )
+      );
     }
   }
 
@@ -81,7 +81,7 @@ const Nav = () => {
               size="md"
               variant="solid"
               className="burger-icon"
-              style={{ position: 'relative', zIndex: 3 }}
+              style={{ position: "relative", zIndex: 3 }}
               onClick={() => setOpened((o) => !o)} // Toggle popover
               opened={opened}
               ripple="light"
@@ -90,10 +90,10 @@ const Nav = () => {
 
           <Popover.Dropdown
             style={{
-              backgroundColor: 'rgba(44, 62, 80, 0)',
-              color: 'white',
-              border: 'none',
-              padding: '10px',
+              backgroundColor: "rgba(44, 62, 80, 0)",
+              color: "white",
+              border: "none",
+              padding: "10px",
             }}
           >
             {showNavigation()}
@@ -101,7 +101,7 @@ const Nav = () => {
         </Popover>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
