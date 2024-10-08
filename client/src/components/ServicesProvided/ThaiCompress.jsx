@@ -1,26 +1,63 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState, useRef } from 'react'
 import { Container, Title, Text, Button } from '@mantine/core'
 import classes from '@/assets/css/HeroImageRight.module.css'
 import { Link } from 'react-router-dom'
 
 const ServicesProvided = () => {
   const [scrollY, setScrollY] = useState(0)
+  const [inView, setInView] = useState(false) // To track if element is in view
+  const sectionRef = useRef(null) // Reference to the component
 
+  // Handle scrolling behavior
   const handleScroll = () => {
-    setScrollY(window.scrollY)
+    if (inView) {
+      setScrollY(window.scrollY)
+    }
   }
 
+  // Use IntersectionObserver to check if the element is in view
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+        } else {
+          setInView(false)
+        }
+      },
+      {
+        root: null, // Use the viewport
+        threshold: 0.1, // 10% of the element must be visible
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
     }
   }, [])
 
+  // Add/remove scroll event listener based on element visibility
+  useEffect(() => {
+    if (inView) {
+      window.addEventListener('scroll', handleScroll)
+    } else {
+      window.removeEventListener('scroll', handleScroll)
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [inView])
+
   return (
     <div
+      ref={sectionRef} // Attach ref to the element
       className={classes.root}
       style={{
         backgroundImage: `url('../assets/images/SoundHealing.JPG')`,
@@ -28,7 +65,7 @@ const ServicesProvided = () => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         height: '80vh',
-        position: 'relative', // To contain absolutely positioned elements
+        position: 'relative',
       }}
     >
       <Container size="lg" style={{ position: 'relative', zIndex: 1 }}>
@@ -36,8 +73,8 @@ const ServicesProvided = () => {
           <div
             className={classes.content}
             style={{
-              transform: `translateY(${scrollY * -0.25}px)`, // Gives the content a parallax effect per M's request
-              marginTop: '300px', // Add margin at the top
+              transform: `translateY(${scrollY * -0.25}px)`, // Parallax effect
+              marginTop: '300px',
             }}
           >
             <Title className={classes.title}>
