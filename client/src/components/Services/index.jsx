@@ -5,20 +5,7 @@ import { Container, Title, Text, Button } from '@mantine/core'
 import classes from '@/assets/css/HeroImageRight.module.css'
 import { Link } from 'react-router-dom'
 
-const Services = () => {
-  const [scrollY, setScrollY] = useState(0)
-
-  const handleScroll = () => {
-    setScrollY(window.scrollY)
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
+const Services = ({ scrollY }) => {
   return (
     <div
       className={classes.root}
