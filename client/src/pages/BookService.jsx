@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { DateTimePicker as MantineDatePicker } from '@mantine/dates';
 import { Select } from '@mantine/core'; // Import Select for service selection
 import { useMutation, useQuery } from '@apollo/client'; // Import useQuery
-import { ADD_ORDER, GET_BOOKED_TIMES } from '../utils/mutations';
+import { ADD_ORDER } from '../utils/mutations';
+import { GET_BOOKED_TIMES } from '../utils/queries';
 
 function BookService() {
     const [value, setValue] = useState(null); 
@@ -14,6 +15,14 @@ function BookService() {
         variables: { service, date: value ? value.toISOString().split('T')[0] : null },
         skip: !service || !value,
     });
+
+    // Handle loading state
+    // if (loading) return <p>Loading...</p>;
+
+    // Handle error state
+    // if (error) return <p>Error: {error.message}</p>;
+    
+        
 
     useEffect(() => {
         if (data && data.getBookedTimes) {
@@ -38,6 +47,18 @@ function BookService() {
     const isTimeBooked = (time) => {
         return bookedTimes.some((booked) => booked === time.toISOString()); // Corrected arrow function syntax
     }
+
+    // Handle loading and error states
+    // if (loading) return <p>Loading...</p>;
+    // if (error) return <p>Error: {error.message}</p>;
+    
+        
+
+    // Render the component with the options, date picker, and submit button
+    // Include error handling for invalid inputs, such as selecting a booked time
+    // Ensure the form is disabled if the service or date are not selected or if the selected time is booked
+    // Add appropriate validation for the date picker to ensure it's selected within a specific range, such as the current day or a week ahead
+    
 
     return (
         <form onSubmit={handleSubmit}>

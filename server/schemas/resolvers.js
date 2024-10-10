@@ -83,6 +83,7 @@ const resolvers = {
 
       return { session: session.id };
     },
+    
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -130,7 +131,10 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
+    },
+    createAppointment: async (parent, { input }) => {
+      return await Appointment.create(input);
+    },
   }
 };
 
