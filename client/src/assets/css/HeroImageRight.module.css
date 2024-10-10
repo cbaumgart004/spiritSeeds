@@ -2,7 +2,11 @@
   background-color: #11284b;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%);
+  background-image: linear-gradient(
+    250deg,
+    rgba(130, 201, 30, 0) 0%,
+    #062343 70%
+  );
   padding-top: calc(var(--mantine-spacing-xl) * 3);
   padding-bottom: calc(var(--mantine-spacing-xl) * 3);
   margin-top: 10px;
@@ -10,13 +14,13 @@
   margin-left: 20px;
   margin-right: 20px;
   text-align: right;
+  position: relative;
   overflow: hidden;
 }
 
 .inner {
   display: flex;
   justify-content: space-between;
-  
 
   @media (max-width: $mantine-breakpoint-md) {
     flex-direction: column;
@@ -24,7 +28,6 @@
 }
 
 .image {
-  
   @media (max-width: $mantine-breakpoint-md) {
     display: none;
   }
@@ -43,12 +46,8 @@
 
 .title {
   color: var(--mantine-color-white);
-  font-family:
-    Greycliff CF,
-    var(--mantine-font-family);
- 
+  font-family: Greycliff CF, var(--mantine-font-family);
 
-  
   font-weight: 900;
   line-height: 1.05;
   max-width: rem(500px);
@@ -80,9 +79,7 @@
 .control {
   padding-left: rem(50px);
   padding-right: rem(50px);
-  font-family:
-    Greycliff CF,
-    var(--mantine-font-family);
+  font-family: Greycliff CF, var(--mantine-font-family);
   font-size: rem(22px);
   margin-left: 10px;
   margin-right: 10px;
@@ -93,9 +90,8 @@
     var(--mantine-color-black) 0%,
     var(--mantine-color-white) 100%
   );
-  
+
   @media (max-width: $mantine-breakpoint-md) {
     width: 100%;
-
   }
 }
