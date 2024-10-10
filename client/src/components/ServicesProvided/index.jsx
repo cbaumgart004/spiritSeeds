@@ -1,21 +1,33 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-
-import { Container, Title, Text, Button } from '@mantine/core'
-import classes from '@/assets/css/HeroImageRight.module.css'
-import { Link } from 'react-router-dom'
 import Abhyanga from './Abhyanga'
 import ChiNeSang from './ChiNeSang'
 import IntegrativeHealing from './IntegrativeHealing'
 import ThaiCompress from './ThaiCompress'
 
 const ServicesProvided = () => {
+  const [scrollY, setScrollY] = useState(0)
+
+  // Handle scroll event to update the scroll position
+  const handleScroll = () => {
+    const windowScrollY = window.scrollY || window.pageYOffset
+    setScrollY(windowScrollY)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll) // Add scroll event listener
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll) // Cleanup event listener on unmount
+    }
+  }, [])
+
   return (
     <div>
-      <IntegrativeHealing />
-      <Abhyanga />
-      <ChiNeSang />
-      <ThaiCompress />
+      {/* Pass the scrollY prop to each child component */}
+      <IntegrativeHealing scrollY={scrollY} />
+      <Abhyanga scrollY={scrollY} />
+      <ChiNeSang scrollY={scrollY} />
+      <ThaiCompress scrollY={scrollY} />
     </div>
   )
 }
