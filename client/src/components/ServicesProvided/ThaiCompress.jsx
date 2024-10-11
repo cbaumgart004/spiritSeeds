@@ -13,9 +13,10 @@ const ThaiCompress = ({ scrollY }) => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        height: '80vh',
+        minHeight: '100vh', // Let the container adjust its height dynamically
         position: 'relative',
-        overflow: 'hidden', // Ensure content stays within its container
+        overflowY: 'auto', // Allow vertical scrolling when content overflows
+        overflowX: 'hidden', // Prevent horizontal overflow
       }}
     >
       <Container size="lg">
