@@ -15,6 +15,7 @@ import ValuesPage from "./pages/ValuesPage";
 import BookService from "./pages/BookService";
 import ServicesPage from "./pages/ServicesPage";
 import About from "./pages/About";
+import AdminDash from "./pages/AdminDash";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/adminDash",
+        element: <AdminDash />,
+        condition: (context) => context.user && context.user.isAdmin,
       },
     ],
   },

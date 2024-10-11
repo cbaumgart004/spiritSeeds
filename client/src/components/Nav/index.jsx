@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Burger, Popover } from "@mantine/core";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
@@ -10,30 +10,57 @@ const Nav = () => {
 
   function showNavigation() {
     if (Auth.loggedIn()) {
-      return (
-        <ul className="nav-links">
-          <li className={`mx-1 ${classes.control}`}>
-            <Link to="/services">Services</Link>
-          </li>
-          <li className={`mx-1 ${classes.control}`}>
-            <Link to="/about">About</Link>
-          </li>
-          <li className={`mx-1 ${classes.control}`}>
-            <Link to="/values">Values</Link>
-          </li>
-          <li className={`mx-1 ${classes.control}`}>
-            <Link to="/merch">Store</Link>
-          </li>
-          <li className={`mx-1 ${classes.control}`}>
-            <Link to="/orderHistory">Order History</Link>
-          </li>
-          <li className={`mx-1 ${classes.control}`}>
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
-      );
+      if (Auth.isAdmin()) {
+        return (
+          <ul className="nav-links">
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/adminDash">Admin Dashboard</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/services">Services</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/about">About</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/values">Values</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/merch">Store</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <a href="/" onClick={() => Auth.logout()}>
+                Logout
+              </a>
+            </li>
+          </ul>
+        );
+      } else {
+        return (
+          <ul className="nav-links">
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/services">Services</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/about">About</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/values">Values</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/merch">Store</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <Link to="/orderHistory">Order History</Link>
+            </li>
+            <li className={`mx-1 ${classes.control}`}>
+              <a href="/" onClick={() => Auth.logout()}>
+                Logout
+              </a>
+            </li>
+          </ul>
+        );
+      }
     } else {
       return (
         <ul className="nav-links">
