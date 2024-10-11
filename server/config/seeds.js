@@ -7,7 +7,9 @@ db.once("open", async () => {
   await cleanDB("Product", "products");
   await cleanDB("User", "users");
 
-  const categories = await Category.insertMany([{ name: "Music audio" }]);
+  const categories = await Category.insertMany([
+    { categoryName: "Music audio" },
+  ]);
 
   console.log("categories seeded");
 
@@ -148,6 +150,7 @@ db.once("open", async () => {
     lastName: "2",
     email: "ashleigh.corse@gmail.com",
     password: "12345",
+    isAdmin: true,
   });
 
   console.log("users seeded");

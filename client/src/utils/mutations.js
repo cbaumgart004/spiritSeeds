@@ -1,4 +1,12 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
+
+export const CREATE_CATEGORY = gql`
+  mutation createCategory($categoryName: String!) {
+    createCategory(categoryName: $categoryName) {
+      categoryName
+    }
+  }
+`;
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
