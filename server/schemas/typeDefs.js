@@ -1,7 +1,7 @@
 const typeDefs = `
   type Category {
     _id: ID
-    name: String
+    categoryName: String
   }
 
   type Product {
@@ -77,6 +77,7 @@ const typeDefs = `
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    createCategory(categoryName: String!): Category
     createAppointment(input: AppointmentInput!): Appointment
     deleteAppointment(_id: ID!): Appointment
   }

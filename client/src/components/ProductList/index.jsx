@@ -48,7 +48,7 @@ function ProductList() {
       <h2>Our Products:</h2>
       {state.products.length ? (
         <div className="flex-row">
-          <div class="img ">
+          <div className="img ">
             <img src="../assets/images/Sonic-Healing.JPG" />
           </div>
           {filterProducts().map((product) => (
