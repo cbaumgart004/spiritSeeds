@@ -42,20 +42,37 @@ function CategoryMenu() {
     });
   };
 
+  const handleDelete = (id) => {
+    dispatch({
+      type: DELETE_CATEGORY,
+      deleteCategory: "",
+    });
+  };
+
   return (
     <div>
       <h2>Choose a Category:</h2>
       {categories.map((item) => (
-        <button
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.categoryName}
-        </button>
+        <div>
+          <button
+            key={item._id}
+            onClick={() => {
+              handleClick(item._id);
+            }}
+          >
+            {item.categoryName}
+          </button>
+          <button
+            key={item._id}
+            onclick={() => {
+              handleDelete(item._id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       ))}
-      {categories.map((item) => (
+      {/* {categories.map((item) => (
         <button
           key={item._id}
           onclick={() => {
@@ -64,7 +81,7 @@ function CategoryMenu() {
         >
           Delete
         </button>
-      ))}
+      ))} */}
       <button
         onClick={() => {
           handleClick("");
