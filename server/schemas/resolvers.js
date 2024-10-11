@@ -83,6 +83,7 @@ const resolvers = {
 
       return { session: session.id };
     },
+    
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -147,6 +148,10 @@ const resolvers = {
       throw AuthenticationError;
     },
   },
+    createAppointment: async (parent, { input }) => {
+      return await Appointment.create(input);
+    },
+  }
 };
 
 module.exports = resolvers;

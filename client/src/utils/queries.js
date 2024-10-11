@@ -68,3 +68,13 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const GET_BOOKED_TIMES = gql`
+  query getBookedTimes($service: ID!, $date: String!) {
+    getBookedTimes(service: $service, date: $date) {
+      _id
+      startTime
+      endTime
+    }
+  }
+`;

@@ -28,6 +28,18 @@ const typeDefs = `
     orders: [Order]
   }
 
+  type Appointment {
+   serviceType: String!
+   date: String!
+   time: String!
+   user: String!
+}
+   input AppointmentInput {
+    serviceType: String!
+    date: String!
+    time: String!}
+
+
   type Checkout {
     session: ID
   }
@@ -46,12 +58,16 @@ const typeDefs = `
     quantity: Int
   }
 
+  
+
   type Query {
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
     user: User
     order(_id: ID!): Order
+    appointments: [Appointment]
+    appointment(_id: ID!): Appointment
     checkout(products: [ProductInput]): Checkout
   }
 
@@ -62,6 +78,8 @@ const typeDefs = `
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     createCategory(categoryName: String!): Category
+    createAppointment(input: AppointmentInput!): Appointment
+    deleteAppointment(_id: ID!): Appointment
   }
 `;
 
