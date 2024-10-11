@@ -7,6 +7,7 @@ import {
 } from "../../utils/actions";
 import { QUERY_CATEGORIES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
+import Auth from "../../utils/auth";
 
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
@@ -52,6 +53,16 @@ function CategoryMenu() {
           }}
         >
           {item.categoryName}
+        </button>
+      ))}
+      {categories.map((item) => (
+        <button
+          key={item._id}
+          onclick={() => {
+            delete item._id;
+          }}
+        >
+          Delete
         </button>
       ))}
       <button

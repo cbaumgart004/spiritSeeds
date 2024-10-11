@@ -146,6 +146,11 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+    deleteCategory: async (parent, { categoryId }, context) => {
+      if (context.user && context.user.isAdmin) {
+        return await Category.findByIdAndDelete(categoryId);
+      }
+    },
   },
 };
 

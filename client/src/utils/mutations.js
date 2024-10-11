@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client";
 
+export const DELETE_CATEGORY = gql`
+  mutation deleteCategory($categoryId: ID!) {
+    deleteCategory(categoryId: $categoryId) {
+      categoryName
+    }
+  }
+`;
+
 export const CREATE_CATEGORY = gql`
   mutation createCategory($categoryName: String!) {
     createCategory(categoryName: $categoryName) {
