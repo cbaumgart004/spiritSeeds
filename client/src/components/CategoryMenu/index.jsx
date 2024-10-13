@@ -1,13 +1,15 @@
 import { useEffect } from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
+  REMOVE_CATEGORY,
 } from "../../utils/actions";
 import { QUERY_CATEGORIES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import Auth from "../../utils/auth";
+import { DELETE_CATEGORY } from "../../utils/mutations";
 
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
@@ -15,6 +17,10 @@ function CategoryMenu() {
   const { categories } = state;
 
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+
+  const [deleteCategory, { error }] = useMutation(DELETE_CATEGORY, {
+    refetchQueries: [QUERY_CATEGORIES, "categories"],
+  });
 
   useEffect(() => {
     if (categoryData) {
@@ -42,20 +48,26 @@ function CategoryMenu() {
     });
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
+    console.log(typeof id);
     dispatch({
-      type: DELETE_CATEGORY,
-      deleteCategory: "",
+      type: REMOVE_CATEGORY,
+      deleteCategory: id,
     });
+    const { data } = await deleteCategory({
+      variables: {
+        categoryId: id,
+      },
+    });
+    console.log("deleted");
   };
 
   return (
     <div>
       <h2>Choose a Category:</h2>
       {categories.map((item) => (
-        <div>
+        <div key={item._id}>
           <button
-            key={item._id}
             onClick={() => {
               handleClick(item._id);
             }}
@@ -63,8 +75,7 @@ function CategoryMenu() {
             {item.categoryName}
           </button>
           <button
-            key={item._id}
-            onclick={() => {
+            onClick={() => {
               handleDelete(item._id);
             }}
           >
@@ -72,16 +83,6 @@ function CategoryMenu() {
           </button>
         </div>
       ))}
-      {/* {categories.map((item) => (
-        <button
-          key={item._id}
-          onclick={() => {
-            delete item._id;
-          }}
-        >
-          Delete
-        </button>
-      ))} */}
       <button
         onClick={() => {
           handleClick("");

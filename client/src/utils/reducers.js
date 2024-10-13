@@ -9,7 +9,7 @@ import {
   CLEAR_CART,
   TOGGLE_CART,
   ADD_CATEGORY,
-  DELETE_CATEGORY,
+  REMOVE_CATEGORY,
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -86,7 +86,7 @@ export const reducer = (state, action) => {
         ...state,
         createCategory: action.createCategory,
       };
-    case DELETE_CATEGORY:
+    case REMOVE_CATEGORY:
       return {
         ...state,
         categories: state.categories.filter(

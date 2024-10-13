@@ -62,7 +62,7 @@ const typeDefs = `
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     createCategory(categoryName: String!): Category
-    deleteCategory(categoryId: Int!): Category
+    deleteCategory(categoryId: String!): Category
   }
 `;
 
