@@ -66,4 +66,15 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_SERVICE = gql`
+  mutation CreateAppointment($serviceType: String!, $date: String!, $time: String) {
+  createAppointment(serviceType: $serviceType, date: $date, time: $time) {
+    _id
+    serviceType
+    date
+    time
+  }
+}
+  `;
+
 

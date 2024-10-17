@@ -29,10 +29,11 @@ const typeDefs = `
   }
 
   type Appointment {
+   _id: ID
    serviceType: String!
    date: String!
    time: String!
-   user: String!
+   user: User
 }
    input AppointmentInput {
     serviceType: String!
@@ -66,7 +67,8 @@ const typeDefs = `
     product(_id: ID!): Product
     user: User
     order(_id: ID!): Order
-    appointments: [Appointment]
+    appointments(userId: ID, serviceType: String, date: String): [Appointment]
+    getAppointment(_id: ID!): Appointment
     appointment(_id: ID!): Appointment
     checkout(products: [ProductInput]): Checkout
   }
@@ -77,13 +79,11 @@ const typeDefs = `
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    createAppointment(serviceType: String!, date: String!, time: String): Appointment
+    updateAppointment(_id: ID!, input: AppointmentInput!): Appointment
     createCategory(categoryName: String!): Category
-
     deleteCategory(categoryId: String!): Category
-
-    createAppointment(input: AppointmentInput!): Appointment
     deleteAppointment(_id: ID!): Appointment
-
   }
 `;
 

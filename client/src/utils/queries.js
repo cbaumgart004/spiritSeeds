@@ -70,11 +70,12 @@ export const QUERY_USER = gql`
 `;
 
 export const GET_BOOKED_TIMES = gql`
-  query getBookedTimes($service: ID!, $date: String!) {
-    getBookedTimes(service: $service, date: $date) {
+  query getAppointments($serviceType: ID!, $date: String!) {
+    appointments(serviceType: $serviceType, date: $date) {
       _id
-      startTime
-      endTime
+      serviceType
+      date
+      time
     }
   }
 `;

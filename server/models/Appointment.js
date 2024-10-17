@@ -6,7 +6,7 @@ const appointmentSchema = new Schema({
     serviceType: {
         type: String,
         required: true,
-        trim: true
+        ref: "Service"
     },
     date: {
         type: Date,
@@ -18,7 +18,7 @@ const appointmentSchema = new Schema({
     },
     user: {
         type: String,
-        required: true,
+        // required: true,
         trim: true
     }
 });
