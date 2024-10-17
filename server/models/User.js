@@ -25,6 +25,13 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
+  appointment: {
+    type: String,
+    ref: 'Appointment'
+  },
+  
+
+  
   orders: [Order.schema]
 });
 

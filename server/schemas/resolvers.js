@@ -1,4 +1,4 @@
-const { User, Product, Category, Order } = require('../models');
+const { User, Product, Category, Order, Appointment } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -51,6 +51,9 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+    getAppointment: async (parent, input) => {
+      return await Appointment.findById(input);
+    },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       await Order.create({ products: args.products.map(({ _id }) => _id) });
@@ -72,6 +75,7 @@ const resolvers = {
           quantity: product.purchaseQuantity,
         });
       }
+    
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -132,7 +136,8 @@ const resolvers = {
 
       return { token, user };
     },
-    createAppointment: async (parent, { input }) => {
+    
+    createAppointment: async (parent, input ) => {
       return await Appointment.create(input);
     },
   }
