@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client";
 
+export const DELETE_CATEGORY = gql`
+  mutation deleteCategory($categoryId: String!) {
+    deleteCategory(categoryId: $categoryId) {
+      categoryName
+    }
+  }
+`;
+
 export const CREATE_CATEGORY = gql`
   mutation createCategory($categoryName: String!) {
     createCategory(categoryName: $categoryName) {
@@ -57,5 +65,16 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_SERVICE = gql`
+  mutation CreateAppointment($serviceType: String!, $date: String!, $time: String) {
+  createAppointment(serviceType: $serviceType, date: $date, time: $time) {
+    _id
+    serviceType
+    date
+    time
+  }
+}
+  `;
 
 

@@ -18,7 +18,7 @@ function ProductList() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   useEffect(() => {
-    console.log(state);
+    // console.log(state);
   });
 
   const [createCategory, { error }] = useMutation(CREATE_CATEGORY, {
