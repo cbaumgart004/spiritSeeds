@@ -1,7 +1,6 @@
-
-const { User, Product, Category, Order, Appointment } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { User, Product, Category, Order, Appointment } = require("../models");
+const { signToken, AuthenticationError } = require("../utils/auth");
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 const resolvers = {
   Query: {
@@ -76,7 +75,6 @@ const resolvers = {
           quantity: product.purchaseQuantity,
         });
       }
-    
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -88,7 +86,6 @@ const resolvers = {
 
       return { session: session.id };
     },
-    
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -157,11 +154,10 @@ const resolvers = {
         return await Category.findByIdAndDelete(categoryId);
       }
     },
-  },
     createAppointment: async (parent, { input }) => {
       return await Appointment.create(input);
     },
-  }
+  },
 };
 
 module.exports = resolvers;
