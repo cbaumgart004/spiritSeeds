@@ -125,6 +125,11 @@ const resolvers = {
     createAppointment: async (parent, { input }) => {
       return await Appointment.create(input)
     },
+    deleteCategory: async (parent, { categoryId }, context) => {
+      if (context.user && context.user.isAdmin) {
+        return await Category.findByIdAndDelete(categoryId);
+      }
+    },
   },
 }
 
