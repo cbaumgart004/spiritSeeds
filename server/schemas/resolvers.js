@@ -1,3 +1,4 @@
+
 const { User, Product, Category, Order, Appointment } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -7,29 +8,29 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    products: async (parent, { category, name }) => {
+    products: async (parent, { category, categoryName }) => {
       const params = {};
 
       if (category) {
         params.category = category;
       }
 
-      if (name) {
-        params.name = {
-          $regex: name
+      if (categoryName) {
+        params.categoryName = {
+          $regex: categoryName,
         };
       }
 
-      return await Product.find(params).populate('category');
+      return await Product.find(params).populate("category");
     },
     product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+      return await Product.findById(_id).populate("category");
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
+          path: "orders.products",
+          populate: "category",
         });
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
@@ -42,8 +43,8 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
+          path: "orders.products",
+          populate: "category",
         });
 
         return user.orders.id(_id);
@@ -64,11 +65,11 @@ const resolvers = {
         // Create a line item for each product
         line_items.push({
           price_data: {
-            currency: 'usd',
+            currency: "usd",
             product_data: {
               name: product.name,
               description: product.description,
-              images: [`${url}/images/${product.image}`]
+              images: [`${url}/images/${product.image}`],
             },
             unit_amount: product.price * 100,
           },
@@ -78,9 +79,9 @@ const resolvers = {
     
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
+        payment_method_types: ["card"],
         line_items,
-        mode: 'payment',
+        mode: "payment",
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
@@ -100,7 +101,9 @@ const resolvers = {
       if (context.user) {
         const order = new Order({ products });
 
-        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { orders: order },
+        });
 
         return order;
       }
@@ -109,7 +112,9 @@ const resolvers = {
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+        return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
       }
 
       throw AuthenticationError;
@@ -117,7 +122,11 @@ const resolvers = {
     updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $inc: { quantity: decrement } },
+        { new: true }
+      );
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -136,8 +145,20 @@ const resolvers = {
 
       return { token, user };
     },
-    
-    createAppointment: async (parent, input ) => {
+    createCategory: async (parent, { categoryName }, context) => {
+      if (context.user && context.user.isAdmin) {
+        return await Category.create({ categoryName });
+      }
+
+      throw AuthenticationError;
+    },
+    deleteCategory: async (parent, { categoryId }, context) => {
+      if (context.user && context.user.isAdmin) {
+        return await Category.findByIdAndDelete(categoryId);
+      }
+    },
+  },
+    createAppointment: async (parent, { input }) => {
       return await Appointment.create(input);
     },
   }

@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { reducer } from './reducers'
+import { reducer } from "./reducers";
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
@@ -10,7 +10,9 @@ const StoreProvider = ({ value = [], ...props }) => {
     cart: [],
     cartOpen: false,
     categories: [],
-    currentCategory: '',
+    currentCategory: "",
+    createCategory: "",
+    deleteCategory: "",
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
