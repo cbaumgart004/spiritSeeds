@@ -59,6 +59,7 @@
     line-height: 1.15;
   }
 }
+
 .gradientText {
   background: linear-gradient(to right, red, blue);
   -webkit-background-clip: text;
