@@ -7,20 +7,7 @@ import { IconBrandSpotify } from '@tabler/icons-react' // For Spotify icon
 import { FaApple } from 'react-icons/fa' // Import the Apple logo from react-icons
 import classes from '@/assets/css/HeroImageRight.module.css'
 import { Link } from 'react-router-dom'
-const Music = () => {
-  const [scrollY, setScrollY] = useState(0)
-
-  const handleScroll = () => {
-    setScrollY(window.scrollY)
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
+const Music = ({ scrollY }) => {
   return (
     <div
       className={classes.root}

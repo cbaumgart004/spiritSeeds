@@ -1,24 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
 import { Container, Title, Text, Button } from '@mantine/core'
 import classes from '@/assets/css/HeroImageRight.module.css'
 import { Link } from 'react-router-dom'
 
-const ServicesProvided = () => {
-  const [scrollY, setScrollY] = useState(0)
-
-  const handleScroll = () => {
-    setScrollY(window.scrollY)
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
+const ThaiCompress = ({ scrollY }) => {
   return (
     <div
       className={classes.root}
@@ -27,26 +13,29 @@ const ServicesProvided = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        height: '80vh',
-        position: 'relative', // To contain absolutely positioned elements
+        minHeight: '100vh', // Let the container adjust its height dynamically
+        position: 'relative',
+        overflowY: 'auto', // Allow vertical scrolling when content overflows
+        overflowX: 'hidden', // Prevent horizontal overflow
       }}
     >
-      <Container size="lg" style={{ position: 'relative', zIndex: 1 }}>
+      <Container size="lg">
         <div className={classes.inner}>
           <div
             className={classes.content}
             style={{
-              transform: `translateY(${scrollY * -0.25}px)`, // Gives the content a parallax effect per M's request
-              marginTop: '300px', // Add margin at the top
+              transform: `translateY(${scrollY * -0.25}px)`, // Apply dynamic parallax effect
+              marginTop: '300px',
+              transition: 'transform 0.2s ease-out', // Smooth transition for parallax
             }}
           >
             <Title className={classes.title}>
-              <span className={classes.gradientText}>Thai Herbal Compress</span>{' '}
+              <span className={classes.gradientText}>Thai Herbal Compress</span>
             </Title>
 
             <Text className={classes.description} mt={30}>
-              This add-on can be added to any session, Thai Herbal Compresses
-              are balls of herbs wrapped in muslin and heated then applied to
+              This add-on can be added to any session. Thai Herbal Compresses
+              are balls of herbs wrapped in muslin and heated, then applied to
               the body along acupressure points to promote healing.
             </Text>
             <Link to="/">
@@ -76,4 +65,4 @@ const ServicesProvided = () => {
   )
 }
 
-export default ServicesProvided
+export default ThaiCompress

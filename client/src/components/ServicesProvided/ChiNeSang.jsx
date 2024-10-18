@@ -1,24 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
 import { Container, Title, Text, Button } from '@mantine/core'
 import classes from '@/assets/css/HeroImageRight.module.css'
 import { Link } from 'react-router-dom'
 
-const ServicesProvided = () => {
-  const [scrollY, setScrollY] = useState(0)
-
-  const handleScroll = () => {
-    setScrollY(window.scrollY)
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
+const ChiNeSang = ({ scrollY }) => {
   return (
     <div
       className={classes.root}
@@ -28,20 +14,22 @@ const ServicesProvided = () => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         height: '80vh',
-        position: 'relative', // To contain absolutely positioned elements
+        position: 'relative',
+        overflow: 'hidden', // Ensure content stays within its container
       }}
     >
-      <Container size="lg" style={{ position: 'relative', zIndex: 1 }}>
+      <Container size="lg">
         <div className={classes.inner}>
           <div
             className={classes.content}
             style={{
-              transform: `translateY(${scrollY * -0.25}px)`, // Gives the content a parallax effect per M's request
-              marginTop: '300px', // Add margin at the top
+              transform: `translateY(${scrollY * -0.25}px)`, // Apply parallax effect
+              marginTop: '300px',
+              transition: 'transform 0.2s ease-out', // Smooth transition for parallax
             }}
           >
             <Title className={classes.title}>
-              <span className={classes.gradientText}>Chi Ne Sang</span>{' '}
+              <span className={classes.gradientText}>Chi Ne Sang</span>
             </Title>
 
             <Text className={classes.description} mt={30}>
@@ -77,4 +65,4 @@ const ServicesProvided = () => {
   )
 }
 
-export default ServicesProvided
+export default ChiNeSang
