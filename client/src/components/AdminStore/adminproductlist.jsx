@@ -42,9 +42,7 @@ function ProductList() {
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
-
     if (name === "categoryName" && value.length <= 280) {
-      console.log(value);
       dispatch({ type: ADD_CATEGORY, createCategory: value });
     }
   };

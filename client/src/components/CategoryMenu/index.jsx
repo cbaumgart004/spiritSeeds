@@ -49,7 +49,6 @@ function CategoryMenu() {
   };
 
   const handleDelete = async (id) => {
-    console.log(typeof id);
     dispatch({
       type: REMOVE_CATEGORY,
       deleteCategory: id,
@@ -59,7 +58,6 @@ function CategoryMenu() {
         categoryId: id,
       },
     });
-    console.log("deleted");
   };
 
   return (
